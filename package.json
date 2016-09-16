@@ -1,0 +1,28 @@
+{
+	"name": "projections",
+	"description": "Coordinate projections",
+	"version": "0.1.0",
+	"keywords": [
+		"projection",
+		"map",
+		"geo",
+		"coordinates",
+		"coords"
+	],
+	"author": "Julius Tens <mail@juliustens.de>",
+	"homepage": "https://github.com/juliuste/projections",
+	"repository": "juliuste/projections",
+	"bugs": "https://github.com/juliuste/projections/issues",
+	"main": "index.js",
+	"files": ["index.js"],
+	"dependencies": {
+	},
+	"devDependencies": {
+	},
+	"scripts": {
+	},
+	"engine" : {
+		"node" : ">=6"
+	},
+	"license": "MIT"
+}
