@@ -21,12 +21,16 @@ assert(h.options().latLimit===85)
 
 // main module
 const coords = {lon: 180, lat: 0}
+const coords2 = {lon: 0, lat: 90}
 assert(round(p.braun(coords).x)===1)
 assert(round(p.centralcylindrical(coords).x)===1)
 assert(round(p.equirectangular(coords).x)===1)
 assert(round(p.gall(coords).x)===1)
 assert(round(p.gallpeters(coords).x)===1)
+assert(round(p.gallpeters(coords2).y)===0)
 assert(round(p.lambert(coords).x)===1)
+assert(round(p.lambert(coords2).y)===0)
 assert(round(p.mercator(coords).x)===1)
 assert(round(p.miller(coords).x)===1)
 assert(round(p.sinusoidal(coords).x)===1)
+assert(round(p.sinusoidal(coords2).y)===0)
