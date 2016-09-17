@@ -35,8 +35,9 @@ Projection | Full name | Available option(s) | Map height
 `equirectangular` | **[Equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection)** | `meridian`, `standardParallel` | 1 / 2
 `gall` | **[Gall stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection)** | `latLimit` | 
 `gallpeters` | **[Gall–Peters](https://en.wikipedia.org/wiki/Gall%E2%80%93Peters_projection)** | - | 2 / π
+`kavrayskiy7` | **[Kavrayskiy VII](https://en.wikipedia.org/wiki/Kavrayskiy_VII_projection)** | - | 
 `lambert` | **[Lambert cylindrical equal-area](https://en.wikipedia.org/wiki/Lambert_cylindrical_equal-area_projection)** | `meridian` | 1 / π
-`mercator` | **[(Web-)Mercator](http://mathworld.wolfram.com/MercatorProjection.html)** | `meridian`, `latLimit` | 
+`mercator` | **[Mercator (Web)](http://mathworld.wolfram.com/MercatorProjection.html)** | `meridian`, `latLimit` | 
 `miller` | **[Miller cylindrical](https://en.wikipedia.org/wiki/Miller_cylindrical_projection)** | `latLimit` | 
 `sinusoidal` | **[Sinusoidal](https://en.wikipedia.org/wiki/Sinusoidal_projection)** | `meridian` | 1 / 2
 

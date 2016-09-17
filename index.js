@@ -62,6 +62,18 @@ const gallpeters = (point, opt) => {
 	else throw new Error('Reverse conversion is not supported (yet).')
 }
 
+const kavrayskiy7 = (point, opt) => {
+	point = h.check(point)
+	opt = h.options(opt)
+	if(point.wgs){
+		return {
+			x: h.rad(point.lon)*Math.sqrt(1/3-Math.pow(h.rad(point.lat)/Math.PI, 2)) * Math.sqrt(3)/(2*Math.PI)+0.5,
+			y: (Math.PI/2-h.rad(point.lat)) / (Math.sqrt(3)*Math.PI)
+		}
+	}
+	else throw new Error('Reverse conversion is not supported (yet).')
+}
+
 const lambert = (point, opt) => {
 	point = h.check(point)
 	opt = h.options(opt)
@@ -111,4 +123,4 @@ const sinusoidal = (point, opt) => {
 	else throw new Error('Reverse conversion is not supported (yet).')
 }
 
-module.exports = {braun, centralcylindrical, equirectangular, gall, gallpeters, lambert, mercator, miller, sinusoidal}
+module.exports = {braun, centralcylindrical, equirectangular, gall, gallpeters, kavrayskiy7, lambert, mercator, miller, sinusoidal}
