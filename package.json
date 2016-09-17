@@ -1,7 +1,7 @@
 {
 	"name": "projections",
 	"description": "Coordinate projections",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"keywords": [
 		"projection",
 		"map",
@@ -14,15 +14,17 @@
 	"repository": "juliuste/projections",
 	"bugs": "https://github.com/juliuste/projections/issues",
 	"main": "index.js",
-	"files": ["index.js"],
+	"files": ["index.js", "helpers.js", "test.js"],
 	"dependencies": {
 	},
 	"devDependencies": {
 	},
 	"scripts": {
+		"test": "node test.js",
+		"prepublish": "npm test"
 	},
 	"engine" : {
-		"node" : ">=6"
+		"node" : ">=4"
 	},
 	"license": "MIT"
 }
