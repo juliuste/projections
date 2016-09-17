@@ -22,30 +22,30 @@ Each projection function returns an object in the form of `{x: …, y: …}` whe
 const collection = require('projections') // for all projections
 const miller = require('projections').miller // for a specific projection
 
-collection.mercator({lat: …, lon: …}, {option: …}) // {x: …, y: …}
-miller({lat: …, lon: …}, opt) // {x: …, y: …}
+collection.mercator({lon: …, lat: …}, {option: …}) // {x: …, y: …}
+miller({lon: …, lat: …}, opt) // {x: …, y: …}
 ```
 
 ### Projections
 
 Projection | Full name | Available option(s) | Map height
 ---------- | --------- | ------------------- | ----------
-`braun` | **Braun stereographic projection** | `latLimit` | 
-`centralcylindrical` | **Central cylindrical projection** | `meridian`, `latLimit` | 
-`equirectangular` | **Equirectangular projection** | `meridian`, `standardParallel` | 
-`gall` | **Gall stereographic projection** | - | 
-`gallpeters` | **Gall–Peters projection** | - | 2 / π
-`lambert` | **Lambert cylindrical equal-area projection** | `meridian` | 1 / π
-`mercator` | **(Web-)Mercator projection** | `meridian`, `latLimit` | 
-`miller` | **Miller cylindrical projection** | `latLimit` | 
-`sinusoidal` | **Sinusoidal projection** | `meridian` | 1/2
+`braun` | **[Braun stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection#Braun_stereographic_projection)** | `latLimit` | 
+`centralcylindrical` | **[Central cylindrical](https://en.wikipedia.org/wiki/Central_cylindrical_projection)** | `meridian`, `latLimit` | 
+`equirectangular` | **[Equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection)** | `meridian`, `standardParallel` | 1 / 2
+`gall` | **[Gall stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection)** | `latLimit` | 
+`gallpeters` | **[Gall–Peters](https://en.wikipedia.org/wiki/Gall%E2%80%93Peters_projection)** | - | 2 / π
+`lambert` | **[Lambert cylindrical equal-area](https://en.wikipedia.org/wiki/Lambert_cylindrical_equal-area_projection)** | `meridian` | 1 / π
+`mercator` | **[(Web-)Mercator](http://mathworld.wolfram.com/MercatorProjection.html)** | `meridian`, `latLimit` | 
+`miller` | **[Miller cylindrical](https://en.wikipedia.org/wiki/Miller_cylindrical_projection)** | `latLimit` | 
+`sinusoidal` | **[Sinusoidal](https://en.wikipedia.org/wiki/Sinusoidal_projection)** | `meridian` | 1 / 2
 
 ### Options
 
 Option | description | Default
 ------ | ----------- | -------
 `meridian` | Latitude of the central meridian | 0
-`latLimit` | maximal latitude in degrees (<90°) | 85
+`latLimit` | maximal latitude in degrees < 90 | 85
 `standardParallel` | latitude of the standard parallel(s) | 0
 
 ## Contributing
