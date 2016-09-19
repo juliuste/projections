@@ -4,6 +4,7 @@ const rad = (deg) => deg*Math.PI/180
 const sin = (deg) => Math.sin(rad(deg))
 const cos = (deg) => Math.cos(rad(deg))
 const tan = (deg) => Math.tan(rad(deg))
+const deg = (rad) => rad*180/Math.PI
 
 const defaults = {
 	meridian: 0,
@@ -12,7 +13,7 @@ const defaults = {
 }
 
 const check = (point) => {
-	if(point.x!==undefined&&point.y!==undefined&&point.lon===undefined&&point.lat===undefined) return {x: +point.x, y: +point.y, wgs: false}
+	if(point.x!==undefined&&point.x>=0&&point.x<=1&&point.y!==undefined&&point.lon===undefined&&point.lat===undefined) return {x: +point.x, y: +point.y, wgs: false}
 	if(point.lon!==undefined&&point.lat!==undefined&&point.x===undefined&&point.y===undefined) return {lon: +point.lon, lat: +point.lat, wgs: true}
 	throw new Error('Invalid input point.')
 }
@@ -21,4 +22,4 @@ const options = (opt) => {
 	return Object.assign({}, defaults, opt || {})
 }
 
-module.exports = {rad, sin, cos, tan, check, options}
+module.exports = {rad, sin, cos, tan, deg, check, options}

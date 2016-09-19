@@ -4,9 +4,21 @@ const p = require('./index')
 const h = require('./helpers')
 const assert = require('assert')
 const round = (number) => Math.round(number*100000)/100000
+const round3 = (number) => Math.round(number*100)/100
+const roundObj = (obj) => {
+	for(let key in obj){
+		obj[key] = round3(obj[key])
+	}
+	return obj
+}
+const checkInverse = (obj, projection) => {
+	assert.deepEqual(roundObj(obj), roundObj(projection(projection(obj))))
+}
 
-// round function in this module
+// round functions in this module
 assert(round(1.222226)===round(1.2222325))
+assert(round3(1.226)===round3(1.234))
+assert.deepEqual(roundObj({l: 1.226}), roundObj({l: 1.234}))
 
 // helpers module
 // trigonometry
@@ -14,25 +26,59 @@ assert(round(h.rad(180))===round(Math.PI))
 assert(round(h.sin(90))===1)
 assert(round(h.cos(90))===0)
 assert(round(h.tan(45))===1)
+assert(round(h.deg(Math.PI/2))===90)
 // other helpers
 assert(h.options({latLimit: 20}).latLimit===20)
 assert(h.options().latLimit===85)
 // TODO: check()
 
 // main module
-const coords = {lon: 180, lat: 0}
-const coords2 = {lon: 0, lat: 90}
-assert(round(p.braun(coords).x)===1)
-assert(round(p.centralcylindrical(coords).x)===1)
-assert(round(p.equirectangular(coords).x)===1)
-assert(round(p.gall(coords).x)===1)
-assert(round(p.gallpeters(coords).x)===1)
-assert(round(p.gallpeters(coords2).y)===0)
-assert(round(p.kavrayskiy7(coords).x)===1)
-assert(round(p.kavrayskiy7(coords2).y)===0)
-assert(round(p.lambert(coords).x)===1)
-assert(round(p.lambert(coords2).y)===0)
-assert(round(p.mercator(coords).x)===1)
-assert(round(p.miller(coords).x)===1)
-assert(round(p.sinusoidal(coords).x)===1)
-assert(round(p.sinusoidal(coords2).y)===0)
+const wgs = {lon: 180, lat: 0}
+const wgs2 = {lon: -24, lat: 60}
+const wgs3 = {lon: 0, lat: 90}
+const coords = {x: 0.5, y: 0}
+
+// Braun
+assert(round(p.braun(wgs).x)===1)
+assert(round3(p.braun(coords).lon)===0)
+checkInverse(wgs2, p.braun)
+// Central cylindrical
+assert(round(p.centralcylindrical(wgs).x)===1)
+assert(round3(p.centralcylindrical(coords).lon)===0)
+checkInverse(wgs2, p.centralcylindrical)
+// Equirectangular
+assert(round(p.equirectangular(wgs).x)===1)
+assert(round3(p.equirectangular(coords).lon)===0)
+checkInverse(wgs2, p.equirectangular)
+// Gall
+assert(round(p.gall(wgs).x)===1)
+assert(round3(p.gall(coords).lon)===0)
+checkInverse(wgs2, p.gall)
+// Gall-Peters
+assert(round(p.gallpeters(wgs).x)===1)
+assert(round3(p.gallpeters(coords).lon)===0)
+checkInverse(wgs2, p.gallpeters)
+assert(round(p.gallpeters(wgs3).y)===0)
+// Kavrayskiy VII
+assert(round(p.kavrayskiy7(wgs).x)===1)
+assert(round3(p.kavrayskiy7(coords).lon)===0)
+checkInverse(wgs2, p.kavrayskiy7)
+assert(round(p.kavrayskiy7(wgs3).y)===0)
+// Lambert
+assert(round(p.lambert(wgs).x)===1)
+assert(round3(p.lambert(coords).lon)===0)
+checkInverse(wgs2, p.lambert)
+assert(round(p.lambert(wgs3).y)===0)
+// Mercator
+assert(round(p.mercator(wgs).x)===1)
+assert(round3(p.mercator(coords).lon)===0)
+checkInverse(wgs2, p.mercator)
+// Miller
+assert(round(p.miller(wgs).x)===1)
+assert(round3(p.miller(coords).lon)===0)
+checkInverse(wgs2, p.miller)
+// Sinusoidal
+assert(round(p.sinusoidal(wgs).x)===1)
+assert(round3(p.sinusoidal(coords).lon)===0)
+checkInverse(wgs2, p.sinusoidal)
+assert(round(p.sinusoidal(wgs3).y)===0)

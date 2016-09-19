@@ -1,12 +1,12 @@
 # projections
 
-Collection of map projections. See [this Wikipedia list](https://en.wikipedia.org/wiki/List_of_map_projections). Reverse projections still to be implemented.
+Collection of map projections. See [this Wikipedia list](https://en.wikipedia.org/wiki/List_of_map_projections).
 
 [![npm version](https://img.shields.io/npm/v/projections.svg)](https://www.npmjs.com/package/projections)
 [![Build Status](https://travis-ci.org/juliuste/projections.svg?branch=master)](https://travis-ci.org/juliuste/projections)
 [![dependency status](https://img.shields.io/david/juliuste/projections.svg)](https://david-dm.org/juliuste/projections)
 [![dev dependency status](https://img.shields.io/david/dev/juliuste/projections.svg)](https://david-dm.org/juliuste/projections#info=devDependencies)
-[![MIT License](https://img.shields.io/badge/license-MIT-black.svg)](https://opensource.org/licenses/MIT)
+[![MIT License](https://img.shields.io/badge/license-MIT-000000.svg)](https://opensource.org/licenses/MIT)
 
 ## Installation
 
@@ -16,15 +16,24 @@ npm install --save projections
 
 ## Usage
 
-Each projection function returns an object in the form of `{x: …, y: …}` where `0 ≤ x ≤ 1`.
+```js
+const projections = require('projections') // for all projections
+const miller = require('projections').miller // for a specific projection
+```
+
+### WGS to map coordinates
 
 ```js
-const collection = require('projections') // for all projections
-const miller = require('projections').miller // for a specific projection
-
-collection.mercator({lon: …, lat: …}, {option: …}) // {x: …, y: …}
-miller({lon: …, lat: …}, opt) // {x: …, y: …}
+projections.mercator({lon: …, lat: …}, {option: …}) // {x: …, y: …}
 ```
+When given an Object containing `lon` and `lat` keys, a projection function returns an object in the form of `{x: …, y: …}` where `0 ≤ x ≤ 1`. For the value range of `y`, see the *map height* column in the projections table.
+
+### Map coordinates to WGS
+
+```js
+projections.mercator({x: …, y: …}, {option: …}) // {lon: …, lat: …}
+```
+When given an Object containing `x` and `y` keys (where `0 ≤ x ≤ 1`), a projection function returns an object in the form of `{lon: …, lat: …}`. Be sure to use the same options everytime you're converting coordinates back and forth to maintain data continuity.
 
 ### Projections
 
@@ -37,7 +46,7 @@ Projection | Full name | Available option(s) | Map height
 `gallpeters` | **[Gall–Peters](https://en.wikipedia.org/wiki/Gall%E2%80%93Peters_projection)** | - | 2 / π
 `kavrayskiy7` | **[Kavrayskiy VII](https://en.wikipedia.org/wiki/Kavrayskiy_VII_projection)** | - | 
 `lambert` | **[Lambert cylindrical equal-area](https://en.wikipedia.org/wiki/Lambert_cylindrical_equal-area_projection)** | `meridian` | 1 / π
-`mercator` | **[Mercator (Web)](http://mathworld.wolfram.com/MercatorProjection.html)** | `meridian`, `latLimit` | 
+`mercator` | **[Mercator (Web)](http://mathworld.wolfram.com/MercatorProjection.html)** | `meridian`, `latLimit` | 
 `miller` | **[Miller cylindrical](https://en.wikipedia.org/wiki/Miller_cylindrical_projection)** | `latLimit` | 
 `sinusoidal` | **[Sinusoidal](https://en.wikipedia.org/wiki/Sinusoidal_projection)** | `meridian` | 1 / 2
 

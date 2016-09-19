@@ -11,7 +11,12 @@ const braun = (point, opt) => {
 			y: (h.tan(opt.latLimit/2)-h.tan(point.lat/2))/(Math.PI)
 		}
 	}
-	else throw new Error('Reverse conversion is not supported (yet).')
+	else{
+		return {
+			lon: h.deg((2*point.x-1)*Math.PI),
+			lat: h.deg(2*Math.atan(h.tan(opt.latLimit/2)-point.y*Math.PI))
+		}
+	}
 }
 
 const centralcylindrical = (point, opt) => {
@@ -23,7 +28,12 @@ const centralcylindrical = (point, opt) => {
 			y: (h.tan(opt.latLimit)-h.tan(point.lat))/(2*Math.PI)
 		}
 	}
-	else throw new Error('Reverse conversion is not supported (yet).')
+	else{
+		return {
+			lon: h.deg((2*point.x-1)*Math.PI+opt.meridian),
+			lat: h.deg(Math.atan(h.tan(opt.latLimit)-2*Math.PI*point.y))
+		}
+	}
 }
 
 const equirectangular = (point, opt) => {
@@ -35,7 +45,12 @@ const equirectangular = (point, opt) => {
 			y: 0.25-(h.rad(point.lat)-h.rad(opt.standardParallel))/(2*Math.PI)
 		}
 	}
-	else throw new Error('Reverse conversion is not supported (yet).')
+	else{
+		return {
+			lon: h.deg((2*point.x-1)*Math.PI*h.cos(opt.standardParallel)+h.rad(opt.meridian)),
+			lat: h.deg((0.25-point.y)*2*Math.PI+h.rad(opt.standardParallel))
+		}
+	}
 }
 
 const gall = (point, opt) => {
@@ -47,7 +62,12 @@ const gall = (point, opt) => {
 			y: (h.tan(opt.latLimit/2)-h.tan(point.lat/2))/(2*Math.PI)*(1+Math.sqrt(2))
 		}
 	}
-	else throw new Error('Reverse conversion is not supported (yet).')
+	else{
+		return {
+			lon: h.deg((2*point.x-1)*Math.PI),
+			lat: h.deg(2*Math.atan(h.tan(opt.latLimit/2)-2*Math.PI*point.y/(1+Math.sqrt(2))))
+		}
+	}
 }
 
 const gallpeters = (point, opt) => {
@@ -59,7 +79,12 @@ const gallpeters = (point, opt) => {
 			y: (1-h.sin(point.lat))/Math.PI
 		}
 	}
-	else throw new Error('Reverse conversion is not supported (yet).')
+	else{
+		return {
+			lon: h.deg((2*point.x-1)*Math.PI),
+			lat: h.deg(Math.asin(1-point.y*Math.PI))
+		}
+	}
 }
 
 const kavrayskiy7 = (point, opt) => {
@@ -71,7 +96,13 @@ const kavrayskiy7 = (point, opt) => {
 			y: (Math.PI/2-h.rad(point.lat)) / (Math.sqrt(3)*Math.PI)
 		}
 	}
-	else throw new Error('Reverse conversion is not supported (yet).')
+	else{
+		const lat = Math.PI/2 - point.y*Math.sqrt(3)*Math.PI
+		return {
+			lon: h.deg((2*point.x-1)*Math.PI/(Math.sqrt(1/3-Math.pow(lat/Math.PI, 2))*Math.sqrt(3))),
+			lat: h.deg(lat)
+		}
+	}
 }
 
 const lambert = (point, opt) => {
@@ -83,7 +114,12 @@ const lambert = (point, opt) => {
 			y: (1-h.sin(point.lat))/(2*Math.PI)
 		}
 	}
-	else throw new Error('Reverse conversion is not supported (yet).')
+	else{
+		return {
+			lon: h.deg((2*point.x-1)*Math.PI+opt.meridian),
+			lat: h.deg(Math.asin(1-2*Math.PI*point.y))
+		}
+	}
 }
 
 const mercator = (point, opt) => {
@@ -95,7 +131,12 @@ const mercator = (point, opt) => {
 			y: (Math.atanh(h.sin(opt.latLimit))-Math.atanh(h.sin(point.lat)))/(2*Math.PI)
 		}
 	}
-	else throw new Error('Reverse conversion is not supported (yet).')
+	else{
+		return {
+			lon: h.deg((2*point.x-1)*Math.PI+opt.meridian),
+			lat: h.deg(Math.asin(Math.tanh((Math.atanh(h.sin(opt.latLimit))-2*Math.PI*point.y))))
+		}
+	}
 }
 
 const miller = (point, opt) => {
@@ -108,7 +149,12 @@ const miller = (point, opt) => {
 		}
 	}
 	// mercator(4/5)*5/4?
-	else throw new Error('Reverse conversion is not supported (yet).')
+	else{
+		return{
+			lon: h.deg((2*point.x-1)*Math.PI),
+			lat: h.deg((5/4)*Math.asin(Math.tanh((Math.atanh(h.sin(opt.latLimit*(4/5)))-8*Math.PI*point.y/5))))
+		}
+	}
 }
 
 const sinusoidal = (point, opt) => {
@@ -120,7 +166,13 @@ const sinusoidal = (point, opt) => {
 			y: (Math.PI/2-h.rad(point.lat))/(2*Math.PI)
 		}
 	}
-	else throw new Error('Reverse conversion is not supported (yet).')
+	else{
+		const lat = h.deg(Math.PI/2 - 2*Math.PI*point.y)
+		return {
+			lon: h.deg((2*point.x-1)*Math.PI/h.cos(lat)+h.rad(opt.meridian)),
+			lat: lat
+		}
+	}
 }
 
 module.exports = {braun, centralcylindrical, equirectangular, gall, gallpeters, kavrayskiy7, lambert, mercator, miller, sinusoidal}
