@@ -12,7 +12,7 @@ const roundObj = (obj) => {
 	return obj
 }
 const checkInverse = (obj, projection) => {
-	assert.deepEqual(roundObj(obj), roundObj(projection(projection(obj))))
+	assert.deepEqual(roundObj(obj), roundObj(projection(projection(obj, {meridian: 40}), {meridian: 40})))
 }
 
 // round functions in this module
@@ -27,16 +27,25 @@ assert(round(h.sin(90))===1)
 assert(round(h.cos(90))===0)
 assert(round(h.tan(45))===1)
 assert(round(h.deg(Math.PI/2))===90)
+// meridian calculations
+const m1 = h.check({lon: 70, lat: 30})
+const m2 = h.check({lon: -170, lat: 20})
+assert(h.addMeridian(m1, 60).lon===10)
+assert(h.addMeridian(m2, -30).lon===-140)
+assert(h.addMeridian(m2, 50).lon===140)
+assert(h.addMeridian(m2, -10).lon===-160)
+assert.deepEqual(m1, h.addMeridian(h.addMeridian(m1, 30), -30))
+assert.deepEqual(m1, h.addMeridian(h.addMeridian(m1, -120), 120))
 // other helpers
 assert(h.options({latLimit: 20}).latLimit===20)
 assert(h.options().latLimit===85)
 // TODO: check()
 
 // main module
-const wgs = {lon: 180, lat: 0}
-const wgs2 = {lon: -24, lat: 60}
-const wgs3 = {lon: 0, lat: 90}
-const coords = {x: 0.5, y: 0}
+const wgs = h.check({lon: 180, lat: 0})
+const wgs2 = h.check({lon: -24, lat: 60})
+const wgs3 = h.check({lon: 0, lat: 90})
+const coords = h.check({x: 0.5, y: 0})
 
 // Braun
 assert(round(p.braun(wgs).x)===1)

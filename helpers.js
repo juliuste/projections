@@ -22,4 +22,10 @@ const options = (opt) => {
 	return Object.assign({}, defaults, opt || {})
 }
 
-module.exports = {rad, sin, cos, tan, deg, check, options}
+const addMeridian = (point, meridian) => {
+	point = check(point)
+	if(meridian!==0) return check({lon: ((point.lon+180+360-meridian)%360)-180, lat: point.lat})
+	return point
+}
+
+module.exports = {rad, sin, cos, tan, deg, addMeridian, check, options}
