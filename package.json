@@ -1,7 +1,7 @@
 {
 	"name": "projections",
-	"description": "Coordinate projections",
-	"version": "0.4.0",
+	"description": "Coordinate projections (stereographic)",
+	"version": "0.5.0",
 	"keywords": [
 		"projection",
 		"map",
@@ -17,7 +17,8 @@
 		"lambert",
 		"mercator",
 		"miller",
-		"sinusoidal"
+		"sinusoidal",
+		"wagner6"
 	],
 	"author": "Julius Tens <mail@juliustens.de>",
 	"homepage": "https://github.com/juliuste/projections",

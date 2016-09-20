@@ -91,3 +91,8 @@ assert(round(p.sinusoidal(wgs).x)===1)
 assert(round3(p.sinusoidal(coords).lon)===0)
 checkInverse(wgs2, p.sinusoidal)
 assert(round(p.sinusoidal(wgs3).y)===0)
+// Wagner VI
+assert(round(p.wagner6(wgs).x)===1)
+assert(round3(p.wagner6(coords).lon)===0)
+checkInverse(wgs2, p.wagner6)
+assert(round(p.wagner6(wgs3).y)===0)
