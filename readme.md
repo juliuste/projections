@@ -1,6 +1,6 @@
 # projections
 
-Collection of map projections. See [this Wikipedia list](https://en.wikipedia.org/wiki/List_of_map_projections).
+Collection of (stereographic) map projections. See [this Wikipedia list](https://en.wikipedia.org/wiki/List_of_map_projections).
 
 [![npm version](https://img.shields.io/npm/v/projections.svg)](https://www.npmjs.com/package/projections)
 [![Build Status](https://travis-ci.org/juliuste/projections.svg?branch=master)](https://travis-ci.org/juliuste/projections)
@@ -65,7 +65,7 @@ Option | description | Default
 ------ | ----------- | -------
 `meridian` | Latitude of the central meridian | 0
 `latLimit` | maximum latitude in degrees < 90 | 85
-`standardParallel` | latitude of the standard parallel(s) | 0
+`standardParallel` | longitude of the standard parallel(s) | 0
 
 ## Contributing
 
