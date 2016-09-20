@@ -52,7 +52,7 @@ Projection | Full name | Available option(s) | Map height\*
 
 \* Generally, the map height is the `y` value of the projection at
 - `{lon: meridian, lat: (-1)*latLimit}` if the projection uses a latitude limit
-- `{lon: meridian, lat: -90` otherwise
+- `{lon: meridian, lat: -90}` otherwise
 
 ### Options
 
