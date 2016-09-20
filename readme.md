@@ -31,7 +31,7 @@ const {x, y} = mercator({lon: 13.5, lat: 52.4})
 
 Given an object containing `lon` and `lat`, `mercator` returns an object `{x: …, y: …}` (`0 ≤ x ≤ 1`). For details on the range of `y`, see the *map height* column in the projections table.
 
-### map coordinates to WGS
+### Map coordinates to WGS
 
 ```js
 const {lon, lat} = mercator({x: 0.53722, y: 0.32686})
