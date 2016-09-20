@@ -18,27 +18,34 @@ npm install --save projections
 
 ```js
 const projections = require('projections') // for all projections
-const miller = require('projections').miller // for a specific projection
+const mercator = require('projections').mercator // for a specific projection
 ```
 
 ### WGS to map coordinates
 
 ```js
-projections.mercator({lon: …, lat: …}, {option: …}) // {x: …, y: …}
+const {x, y} = mercator({lon: 13.5, lat: 52.4})
+// x ≊ 0.53722
+// y ≊ 0.32686
 ```
-When given an Object containing `lon` and `lat` keys, a projection function returns an object in the form of `{x: …, y: …}` where `0 ≤ x ≤ 1`. For the value range of `y`, see the *map height* column in the projections table.
 
-### Map coordinates to WGS
+Given an object containing `lon` and `lat`, `mercator` returns an object `{x: …, y: …}` (`0 ≤ x ≤ 1`). For details on the range of `y`, see the *map height* column in the projections table.
+
+### map coordinates to WGS
 
 ```js
-projections.mercator({x: …, y: …}, {option: …}) // {lon: …, lat: …}
+const {lon, lat} = mercator({x: 0.53722, y: 0.32686})
+// lon ≊ 13.5
+// lat ≊ 52.4
 ```
-When given an Object containing `x` and `y` keys (where `0 ≤ x ≤ 1`), a projection function returns an object in the form of `{lon: …, lat: …}`. Be sure to use the same options everytime you're converting coordinates back and forth to maintain data continuity.
+Given an object containing `x` and `y` (`0 ≤ x ≤ 1`), `mercator` returns an object `{lon: …, lat: …}`.
+
+**Be sure to use the same options everytime you're converting coordinates back and forth to get correct results.**
 
 ### Projections
 
-Projection | Full name | Available option(s) | Map height\*
----------- | --------- | ------------------- | -----------
+Projection | Full name | Available options | Map height\*
+---------- | --------- | ----------------- | -----------
 `braun` | **[Braun stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection#Braun_stereographic_projection)** | `meridian`, `latLimit`
 `centralcylindrical` | **[Central cylindrical](https://en.wikipedia.org/wiki/Central_cylindrical_projection)** | `meridian`, `latLimit`
 `equirectangular` | **[Equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection)** | `meridian`, `standardParallel` | 1 / 2
@@ -50,16 +57,14 @@ Projection | Full name | Available option(s) | Map height\*
 `miller` | **[Miller cylindrical](https://en.wikipedia.org/wiki/Miller_cylindrical_projection)** | `meridian`, `latLimit` | 
 `sinusoidal` | **[Sinusoidal](https://en.wikipedia.org/wiki/Sinusoidal_projection)** | `meridian` | 1 / 2
 
-\* Generally, the map height is the `y` value of the projection at
-- `{lon: meridian, lat: (-1)*latLimit}` if the projection uses a latitude limit
-- `{lon: meridian, lat: -90` otherwise
+\* If the projection uses a latitude limit, the map height is the value of `y` at `{lon: meridian, lat: -latLimit}`. Otherwise it is the value of `y` at `{lon: meridian, lat: -90`.
 
 ### Options
 
 Option | description | Default
 ------ | ----------- | -------
 `meridian` | Latitude of the central meridian | 0
-`latLimit` | maximal latitude in degrees < 90 | 85
+`latLimit` | maximum latitude in degrees < 90 | 85
 `standardParallel` | latitude of the standard parallel(s) | 0
 
 ## Contributing
