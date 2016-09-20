@@ -37,10 +37,10 @@ When given an Object containing `x` and `y` keys (where `0 ≤ x ≤ 1`), a proj
 
 ### Projections
 
-Projection | Full name | Available option(s) | Map height
----------- | --------- | ------------------- | ----------
-`braun` | **[Braun stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection#Braun_stereographic_projection)** | `meridian`, `latLimit` | 
-`centralcylindrical` | **[Central cylindrical](https://en.wikipedia.org/wiki/Central_cylindrical_projection)** | `meridian`, `latLimit` | 
+Projection | Full name | Available option(s) | Map height\*
+---------- | --------- | ------------------- | -----------
+`braun` | **[Braun stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection#Braun_stereographic_projection)** | `meridian`, `latLimit`
+`centralcylindrical` | **[Central cylindrical](https://en.wikipedia.org/wiki/Central_cylindrical_projection)** | `meridian`, `latLimit`
 `equirectangular` | **[Equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection)** | `meridian`, `standardParallel` | 1 / 2
 `gall` | **[Gall stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection)** | `meridian`, `latLimit` | 
 `gallpeters` | **[Gall–Peters](https://en.wikipedia.org/wiki/Gall%E2%80%93Peters_projection)** | `meridian` | 2 / π
@@ -49,6 +49,10 @@ Projection | Full name | Available option(s) | Map height
 `mercator` | **[Mercator (Web)](http://mathworld.wolfram.com/MercatorProjection.html)** | `meridian`, `latLimit` | 
 `miller` | **[Miller cylindrical](https://en.wikipedia.org/wiki/Miller_cylindrical_projection)** | `meridian`, `latLimit` | 
 `sinusoidal` | **[Sinusoidal](https://en.wikipedia.org/wiki/Sinusoidal_projection)** | `meridian` | 1 / 2
+
+\* Generally, the map height is the `y` value of the projection at
+- `{lon: meridian, lat: (-1)*latLimit}` if the projection uses a latitude limit
+- `{lon: meridian, lat: -90` otherwise
 
 ### Options
 

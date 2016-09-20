@@ -7,7 +7,17 @@
 		"map",
 		"geo",
 		"coordinates",
-		"coords"
+		"coords",
+		"braun",
+		"centralcylindrical",
+		"equirectangular",
+		"gall",
+		"gallpeters",
+		"kavrayskiy",
+		"lambert",
+		"mercator",
+		"miller",
+		"sinusoidal"
 	],
 	"author": "Julius Tens <mail@juliustens.de>",
 	"homepage": "https://github.com/juliuste/projections",
