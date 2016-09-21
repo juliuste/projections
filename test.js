@@ -140,3 +140,11 @@ test('sinusoidal projection', (t) => {
 	assertInverse(t, wgs2, p.sinusoidal)
 	t.equal(round(p.sinusoidal(wgs3).y), 0)
 })
+
+test('Wagner VI projection', (t) => {
+	t.plan(4)
+	t.equal(round(p.wagner6(wgs).x), 1)
+	t.equal(round3(p.wagner6(coords).lon), 0)
+	assertInverse(t, wgs2, p.wagner6)
+	t.equal(round(p.wagner6(wgs3).y), 0)
+})
