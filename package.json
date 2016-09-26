@@ -25,10 +25,11 @@
 	"repository": "juliuste/projections",
 	"bugs": "https://github.com/juliuste/projections/issues",
 	"main": "index.js",
-	"files": ["index.js", "helpers.js", "test.js"],
+	"files": ["index.js", "helpers.js"],
 	"dependencies": {
 	},
 	"devDependencies": {
+		"tape": "^4.6"
 	},
 	"scripts": {
 		"test": "node test.js",
