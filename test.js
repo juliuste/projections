@@ -1,6 +1,6 @@
 'use strict'
 
-const p = require('./index')
+const p = require('.')
 const h = require('./helpers')
 const test = require('tape')
 

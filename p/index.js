@@ -1,6 +1,6 @@
 'use strict'
 
-const h = require('./helpers')
+const h = require('../helpers')
 
 const braun = (point, opt) => {
 	point = h.check(point)
@@ -214,4 +214,16 @@ const wagner6 = (point, opt) => {
 	}
 }
 
-module.exports = {braun, centralcylindrical, equirectangular, gall, gallpeters, kavrayskiy7, lambert, mercator, miller, sinusoidal, wagner6}
+module.exports = {
+	braun,
+	centralcylindrical,
+	equirectangular,
+	gall,
+	gallpeters,
+	kavrayskiy7,
+	lambert,
+	mercator,
+	miller,
+	sinusoidal,
+	wagner6
+}
