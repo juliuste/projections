@@ -67,6 +67,23 @@ test('options helper', (t) => {
 
 
 
+test('requiring projections directly', (t) => {
+	t.plan(11)
+	t.equal(require('./p/braun'), p.braun)
+	t.equal(require('./p/central-cylindrical'), p.centralcylindrical)
+	t.equal(require('./p/equirectangular'), p.equirectangular)
+	t.equal(require('./p/gall'), p.gall)
+	t.equal(require('./p/gall-peters'), p.gallpeters)
+	t.equal(require('./p/kavrayskiy-7'), p.kavrayskiy7)
+	t.equal(require('./p/lambert'), p.lambert)
+	t.equal(require('./p/mercator'), p.mercator)
+	t.equal(require('./p/miller'), p.miller)
+	t.equal(require('./p/sinusoidal'), p.sinusoidal)
+	t.equal(require('./p/wagner-6'), p.wagner6)
+})
+
+
+
 test('Braun projection', (t) => {
 	t.plan(3)
 	t.equal(round(p.braun(wgs).x), 1)
