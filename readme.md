@@ -18,7 +18,7 @@ npm install --save projections
 
 ```js
 const projections = require('projections') // for all projections
-const mercator = require('projections').mercator // for a specific projection
+const mercator = require('projections/p/mercator') // for a specific projection
 ```
 
 ### WGS to map coordinates
@@ -46,17 +46,17 @@ Given an object containing `x` and `y` (`0 ≤ x ≤ 1`), `mercator` returns an 
 
 Projection | Full name | Available options | Map height\*
 ---------- | --------- | ----------------- | -----------
-`braun` | **[Braun stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection#Braun_stereographic_projection)** | `meridian`, `latLimit`
-`centralcylindrical` | **[Central cylindrical](https://en.wikipedia.org/wiki/Central_cylindrical_projection)** | `meridian`, `latLimit`
-`equirectangular` | **[Equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection)** | `meridian`, `standardParallel` | 1 / 2
-`gall` | **[Gall stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection)** | `meridian`, `latLimit` |
-`gallpeters` | **[Gall–Peters](https://en.wikipedia.org/wiki/Gall%E2%80%93Peters_projection)** | `meridian` | 2 / π
-`kavrayskiy7` | **[Kavrayskiy VII](https://en.wikipedia.org/wiki/Kavrayskiy_VII_projection)** | `meridian` | 1 / √3
-`lambert` | **[Lambert cylindrical equal-area](https://en.wikipedia.org/wiki/Lambert_cylindrical_equal-area_projection)** | `meridian` | 1 / π
-`mercator` | **[Mercator (Web)](http://mathworld.wolfram.com/MercatorProjection.html)** | `meridian`, `latLimit` |
-`miller` | **[Miller cylindrical](https://en.wikipedia.org/wiki/Miller_cylindrical_projection)** | `meridian`, `latLimit` |
-`sinusoidal` | **[Sinusoidal](https://en.wikipedia.org/wiki/Sinusoidal_projection)** | `meridian` | 1 / 2
-`wagner6` | **[Wagner VI](https://en.wikipedia.org/wiki/Wagner_VI_projection)** | `meridian` | 1 / 2
+`p/braun` | **[Braun stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection#Braun_stereographic_projection)** | `meridian`, `latLimit`
+`p/central-cylindrical` | **[Central cylindrical](https://en.wikipedia.org/wiki/Central_cylindrical_projection)** | `meridian`, `latLimit`
+`p/equirectangular` | **[Equirectangular](https://en.wikipedia.org/wiki/Equirectangular_projection)** | `meridian`, `standardParallel` | 1 / 2
+`p/gall` | **[Gall stereographic](https://en.wikipedia.org/wiki/Gall_stereographic_projection)** | `meridian`, `latLimit` |
+`p/gall-peters` | **[Gall–Peters](https://en.wikipedia.org/wiki/Gall%E2%80%93Peters_projection)** | `meridian` | 2 / π
+`p/kavrayskiy-7` | **[Kavrayskiy VII](https://en.wikipedia.org/wiki/Kavrayskiy_VII_projection)** | `meridian` | 1 / √3
+`p/lambert` | **[Lambert cylindrical equal-area](https://en.wikipedia.org/wiki/Lambert_cylindrical_equal-area_projection)** | `meridian` | 1 / π
+`p/mercator` | **[Mercator (Web)](http://mathworld.wolfram.com/MercatorProjection.html)** | `meridian`, `latLimit` |
+`p/miller` | **[Miller cylindrical](https://en.wikipedia.org/wiki/Miller_cylindrical_projection)** | `meridian`, `latLimit` |
+`p/sinusoidal` | **[Sinusoidal](https://en.wikipedia.org/wiki/Sinusoidal_projection)** | `meridian` | 1 / 2
+`p/wagner-6` | **[Wagner VI](https://en.wikipedia.org/wiki/Wagner_VI_projection)** | `meridian` | 1 / 2
 
 \* If the projection uses a latitude limit, the map height is the value of `y` at `{lon: meridian, lat: -latLimit}`. Otherwise it is the value of `y` at `{lon: meridian, lat: -90}`.
 
