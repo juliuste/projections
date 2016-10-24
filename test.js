@@ -1,6 +1,6 @@
 'use strict'
 
-const p = require('./index')
+const p = require('.')
 const h = require('./helpers')
 const test = require('tape')
 
@@ -67,6 +67,23 @@ test('options helper', (t) => {
 
 
 
+test('requiring projections directly', (t) => {
+	t.plan(11)
+	t.equal(require('./braun'), p.braun)
+	t.equal(require('./central-cylindrical'), p.centralCylindrical)
+	t.equal(require('./equirectangular'), p.equirectangular)
+	t.equal(require('./gall'), p.gall)
+	t.equal(require('./gall-peters'), p.gallPeters)
+	t.equal(require('./kavrayskiy-7'), p.kavrayskiy7)
+	t.equal(require('./lambert'), p.lambert)
+	t.equal(require('./mercator'), p.mercator)
+	t.equal(require('./miller'), p.miller)
+	t.equal(require('./sinusoidal'), p.sinusoidal)
+	t.equal(require('./wagner-6'), p.wagner6)
+})
+
+
+
 test('Braun projection', (t) => {
 	t.plan(3)
 	t.equal(round(p.braun(wgs).x), 1)
@@ -76,9 +93,9 @@ test('Braun projection', (t) => {
 
 test('central cylindrical projection', (t) => {
 	t.plan(3)
-	t.equal(round(p.centralcylindrical(wgs).x), 1)
-	t.equal(round3(p.centralcylindrical(coords).lon), 0)
-	assertInverse(t, wgs2, p.centralcylindrical)
+	t.equal(round(p.centralCylindrical(wgs).x), 1)
+	t.equal(round3(p.centralCylindrical(coords).lon), 0)
+	assertInverse(t, wgs2, p.centralCylindrical)
 })
 
 test('equirectangular projection', (t) => {
@@ -97,10 +114,10 @@ test('Gall projection', (t) => {
 
 test('Gall-Peters projection', (t) => {
 	t.plan(4)
-	t.equal(round(p.gallpeters(wgs).x), 1)
-	t.equal(round3(p.gallpeters(coords).lon), 0)
-	assertInverse(t, wgs2, p.gallpeters)
-	t.equal(round(p.gallpeters(wgs3).y), 0)
+	t.equal(round(p.gallPeters(wgs).x), 1)
+	t.equal(round3(p.gallPeters(coords).lon), 0)
+	assertInverse(t, wgs2, p.gallPeters)
+	t.equal(round(p.gallPeters(wgs3).y), 0)
 })
 
 test('Kavrayskiy VII projection', (t) => {
