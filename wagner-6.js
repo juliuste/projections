@@ -1,6 +1,6 @@
 'use strict'
 
-const h = require('../helpers')
+const h = require('./helpers')
 const kavrayskiy7 = require('./kavrayskiy-7')
 
 const wagner6 = (point, opt) => {

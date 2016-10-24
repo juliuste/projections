@@ -1,6 +1,6 @@
 'use strict'
 
-const h = require('../helpers')
+const h = require('./helpers')
 
 const sinusoidal = (point, opt) => {
 	point = h.check(point)

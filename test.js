@@ -69,17 +69,17 @@ test('options helper', (t) => {
 
 test('requiring projections directly', (t) => {
 	t.plan(11)
-	t.equal(require('./p/braun'), p.braun)
-	t.equal(require('./p/central-cylindrical'), p.centralCylindrical)
-	t.equal(require('./p/equirectangular'), p.equirectangular)
-	t.equal(require('./p/gall'), p.gall)
-	t.equal(require('./p/gall-peters'), p.gallPeters)
-	t.equal(require('./p/kavrayskiy-7'), p.kavrayskiy7)
-	t.equal(require('./p/lambert'), p.lambert)
-	t.equal(require('./p/mercator'), p.mercator)
-	t.equal(require('./p/miller'), p.miller)
-	t.equal(require('./p/sinusoidal'), p.sinusoidal)
-	t.equal(require('./p/wagner-6'), p.wagner6)
+	t.equal(require('./braun'), p.braun)
+	t.equal(require('./central-cylindrical'), p.centralCylindrical)
+	t.equal(require('./equirectangular'), p.equirectangular)
+	t.equal(require('./gall'), p.gall)
+	t.equal(require('./gall-peters'), p.gallPeters)
+	t.equal(require('./kavrayskiy-7'), p.kavrayskiy7)
+	t.equal(require('./lambert'), p.lambert)
+	t.equal(require('./mercator'), p.mercator)
+	t.equal(require('./miller'), p.miller)
+	t.equal(require('./sinusoidal'), p.sinusoidal)
+	t.equal(require('./wagner-6'), p.wagner6)
 })
 
 

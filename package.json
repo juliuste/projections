@@ -24,8 +24,8 @@
 	"homepage": "https://github.com/juliuste/projections",
 	"repository": "juliuste/projections",
 	"bugs": "https://github.com/juliuste/projections/issues",
-	"main": "./p/index.js",
-	"files": ["p/*.js", "helpers.js"],
+	"main": "./index.js",
+	"files": ["*.js", "!test.js"],
 	"dependencies": {
 	},
 	"devDependencies": {
