@@ -1,7 +1,7 @@
 {
 	"name": "projections",
 	"description": "Coordinate projections (stereographic)",
-	"version": "0.6.0",
+	"version": "1.0.0",
 	"keywords": [
 		"projection",
 		"map",
