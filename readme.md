@@ -1,5 +1,7 @@
 # projections
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/projections.svg)](https://greenkeeper.io/)
+
 Collection of (stereographic) map projections. See [this Wikipedia list](https://en.wikipedia.org/wiki/List_of_map_projections).
 
 [![npm version](https://img.shields.io/npm/v/projections.svg)](https://www.npmjs.com/package/projections)
