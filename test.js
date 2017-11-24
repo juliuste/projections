@@ -10,8 +10,8 @@ const round3 = (number) => Math.round(number*100)/100
 
 const hasProp = (o, k) => Object.prototype.hasOwnProperty.call(o, k)
 const assertInverse = (test, obj, projection) => {
-	const forth = projection(obj, {meridian: 40})
-	const back = projection(forth, {meridian: 40})
+	const forth = projection.project(obj, {meridian: 40})
+	const back = projection.inverse(forth, {meridian: 40})
 
 	for (let k in obj) {
 		if (!hasProp(obj, k)) continue
@@ -85,83 +85,83 @@ test('requiring projections directly', (t) => {
 
 
 test('Braun projection', (t) => {
-	t.equal(round(p.braun(wgs).x), 1)
-	t.equal(round3(p.braun(coords).lon), 0)
+	t.equal(round(p.braun.project(wgs).x), 1)
+	t.equal(round3(p.braun.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.braun)
 	t.end()
 })
 
 test('central cylindrical projection', (t) => {
-	t.equal(round(p.centralCylindrical(wgs).x), 1)
-	t.equal(round3(p.centralCylindrical(coords).lon), 0)
+	t.equal(round(p.centralCylindrical.project(wgs).x), 1)
+	t.equal(round3(p.centralCylindrical.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.centralCylindrical)
 	t.end()
 })
 
 test('equirectangular projection', (t) => {
-	t.equal(round(p.equirectangular(wgs).x), 1)
-	t.equal(round3(p.equirectangular(coords).lon), 0)
+	t.equal(round(p.equirectangular.project(wgs).x), 1)
+	t.equal(round3(p.equirectangular.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.equirectangular)
 	t.end()
 })
 
 test('Gall projection', (t) => {
-	t.equal(round(p.gall(wgs).x), 1)
-	t.equal(round3(p.gall(coords).lon), 0)
+	t.equal(round(p.gall.project(wgs).x), 1)
+	t.equal(round3(p.gall.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.gall)
 	t.end()
 })
 
 test('Gall-Peters projection', (t) => {
-	t.equal(round(p.gallPeters(wgs).x), 1)
-	t.equal(round3(p.gallPeters(coords).lon), 0)
+	t.equal(round(p.gallPeters.project(wgs).x), 1)
+	t.equal(round3(p.gallPeters.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.gallPeters)
-	t.equal(round(p.gallPeters(wgs3).y), 0)
+	t.equal(round(p.gallPeters.project(wgs3).y), 0)
 	t.end()
 })
 
 test('Kavrayskiy VII projection', (t) => {
-	t.equal(round(p.kavrayskiy7(wgs).x), 1)
-	t.equal(round3(p.kavrayskiy7(coords).lon), 0)
+	t.equal(round(p.kavrayskiy7.project(wgs).x), 1)
+	t.equal(round3(p.kavrayskiy7.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.kavrayskiy7)
-	t.equal(round(p.kavrayskiy7(wgs3).y), 0)
+	t.equal(round(p.kavrayskiy7.project(wgs3).y), 0)
 	t.end()
 })
 
 test('Lambert projection', (t) => {
-	t.equal(round(p.lambert(wgs).x), 1)
-	t.equal(round3(p.lambert(coords).lon), 0)
+	t.equal(round(p.lambert.project(wgs).x), 1)
+	t.equal(round3(p.lambert.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.lambert)
-	t.equal(round(p.lambert(wgs3).y), 0)
+	t.equal(round(p.lambert.project(wgs3).y), 0)
 	t.end()
 })
 
 test('Mercator projection', (t) => {
-	t.equal(round(p.mercator(wgs).x), 1)
-	t.equal(round3(p.mercator(coords).lon), 0)
+	t.equal(round(p.mercator.project(wgs).x), 1)
+	t.equal(round3(p.mercator.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.mercator)
 	t.end()
 })
 
 test('Miller projection', (t) => {
-	t.equal(round(p.miller(wgs).x), 1)
-	t.equal(round3(p.miller(coords).lon), 0)
+	t.equal(round(p.miller.project(wgs).x), 1)
+	t.equal(round3(p.miller.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.miller)
 	t.end()
 })
 
 test('sinusoidal projection', (t) => {
-	t.equal(round(p.sinusoidal(wgs).x), 1)
-	t.equal(round3(p.sinusoidal(coords).lon), 0)
+	t.equal(round(p.sinusoidal.project(wgs).x), 1)
+	t.equal(round3(p.sinusoidal.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.sinusoidal)
-	t.equal(round(p.sinusoidal(wgs3).y), 0)
+	t.equal(round(p.sinusoidal.project(wgs3).y), 0)
 	t.end()
 })
 
 test('Wagner VI projection', (t) => {
-	t.equal(round(p.wagner6(wgs).x), 1)
-	t.equal(round3(p.wagner6(coords).lon), 0)
+	t.equal(round(p.wagner6.project(wgs).x), 1)
+	t.equal(round3(p.wagner6.inverse(coords).lon), 0)
 	assertInverse(t, wgs2, p.wagner6)
-	t.equal(round(p.wagner6(wgs3).y), 0)
+	t.equal(round(p.wagner6.project(wgs3).y), 0)
 	t.end()
 })
