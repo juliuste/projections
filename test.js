@@ -20,10 +20,10 @@ const assertInverse = (test, obj, projection) => {
 }
 
 // fixtures
-const wgs = h.check({lon: 180, lat: 0})
-const wgs2 = h.check({lon: -24, lat: 60})
-const wgs3 = h.check({lon: 0, lat: 90})
-const coords = h.check({x: 0.5, y: 0})
+const wgs = h.validatePoint({lon: 180, lat: 0})
+const wgs2 = h.validatePoint({lon: -24, lat: 60})
+const wgs3 = h.validatePoint({lon: 0, lat: 90})
+const coords = h.validatePoint({x: 0.5, y: 0})
 
 
 
@@ -47,8 +47,8 @@ test('trigonometry helpers', (t) => {
 // TODO: check()
 
 test('meridian calculations', (t) => {
-	const m1 = h.check({lon: 70, lat: 30})
-	const m2 = h.check({lon: -170, lat: 20})
+	const m1 = h.validatePoint({lon: 70, lat: 30})
+	const m2 = h.validatePoint({lon: -170, lat: 20})
 	t.plan(6)
 	t.equal(h.addMeridian(m1, 60).lon, 10)
 	t.equal(h.addMeridian(m2, -30).lon, -140)

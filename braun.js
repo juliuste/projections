@@ -3,7 +3,7 @@
 const h = require('./helpers')
 
 const braun = (point, opt) => {
-	point = h.check(point)
+	point = h.validatePoint(point)
 	opt = h.options(opt)
 	if(point.wgs){
 		point = h.addMeridian(point, opt.meridian)

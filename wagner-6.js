@@ -4,7 +4,7 @@ const h = require('./helpers')
 const kavrayskiy7 = require('./kavrayskiy-7')
 
 const wagner6 = (point, opt) => {
-	point = h.check(point)
+	point = h.validatePoint(point)
 	opt = h.options(opt)
 	if(point.wgs){
 		point = kavrayskiy7(point, opt)

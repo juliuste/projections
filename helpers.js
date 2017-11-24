@@ -12,17 +12,22 @@ const defaults = {
 	latLimit: 85
 }
 
-const check = (point) => {
-	if (point.x !== undefined && point.x >= 0 && point.x <= 1 &&
-		point.y !== undefined &&
-		point.lon === undefined && point.lat === undefined) {
-		return {x: +point.x, y: +point.y, wgs: false}
+const validatePoint = (point) => {
+	if (('x' in point) && ('y' in point)) {
+		if ('number' !== typeof point.x) throw new Error('point.x must be a number')
+		if ('number' !== typeof point.y) throw new Error('point.y must be a number')
+		if (point.x < 0) throw new Error('point.x must be >= 0')
+		if (point.x > 1) throw new Error('point.x must be <= 1')
+		return {x: point.x, y: point.y, wgs: false}
 	}
-	if (point.lon !== undefined && point.lat !== undefined &&
-		point.x === undefined && point.y === undefined) {
-		return {lon: +point.lon, lat: +point.lat, wgs: true}
+
+	if (('lon' in point) && ('lat' in point)) {
+		if ('number' !== typeof point.lon) throw new Error('point.lon must be a number')
+		if ('number' !== typeof point.lat) throw new Error('point.lat must be a number')
+		return {lon: point.lon, lat: point.lat, wgs: true}
 	}
-	throw new Error('Invalid input point.')
+
+	throw new Error('point must either have x & y or lon & lat')
 }
 
 const options = (opt) => {
@@ -30,8 +35,8 @@ const options = (opt) => {
 }
 
 const addMeridian = (point, meridian) => {
-	point = check(point)
-	if (meridian !== 0) return check({
+	point = validatePoint(point)
+	if (meridian !== 0) return validatePoint({
 		lon: ((point.lon + 180 + 360 - meridian) % 360) - 180,
 		lat: point.lat
 	})
@@ -41,6 +46,6 @@ const addMeridian = (point, meridian) => {
 module.exports = {
 	rad, sin, cos, tan, deg,
 	options,
-	check,
+	validatePoint,
 	addMeridian
 }
