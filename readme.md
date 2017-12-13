@@ -24,17 +24,17 @@ const mercator = require('projections/mercator') // for a specific projection
 ### WGS to map coordinates
 
 ```js
-const {x, y} = mercator({lon: 13.5, lat: 52.4})
+const {x, y} = mercator.project({lon: 13.5, lat: 52.4})
 // x ≊ 0.53722
 // y ≊ 0.32686
 ```
 
-Given an object containing `lon` and `lat`, `mercator` returns an object `{x: …, y: …}` (`0 ≤ x ≤ 1`). For details on the range of `y`, see the *map height* column in the projections table.
+Given an object containing `lon` and `lat`, `mercator.project` returns an object `{x: …, y: …}` (`0 ≤ x ≤ 1`). For details on the range of `y`, see the *map height* column in the [projections table](#projections).
 
 ### Map coordinates to WGS
 
 ```js
-const {lon, lat} = mercator({x: 0.53722, y: 0.32686})
+const {lon, lat} = mercator.inverse({x: 0.53722, y: 0.32686})
 // lon ≊ 13.5
 // lat ≊ 52.4
 ```

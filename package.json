@@ -25,9 +25,10 @@
 	"repository": "juliuste/projections",
 	"bugs": "https://github.com/juliuste/projections/issues",
 	"main": "./index.js",
-	"files": ["*.js", "!test.js"],
-	"dependencies": {
-	},
+	"files": [
+		"*.js",
+		"!test.js"
+	],
 	"devDependencies": {
 		"tape": "^4.6"
 	},
@@ -35,8 +36,8 @@
 		"test": "node test.js",
 		"prepublish": "npm test"
 	},
-	"engine" : {
-		"node" : ">=4"
+	"engine": {
+		"node": ">=4"
 	},
 	"license": "MIT"
 }
