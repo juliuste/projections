@@ -4,9 +4,11 @@ Collection of (stereographic) map projections. See [this Wikipedia list](https:/
 
 [![npm version](https://img.shields.io/npm/v/projections.svg)](https://www.npmjs.com/package/projections)
 [![Build Status](https://travis-ci.org/juliuste/projections.svg?branch=master)](https://travis-ci.org/juliuste/projections)
+[![Greenkeeper badge](https://badges.greenkeeper.io/juliuste/projections.svg)](https://greenkeeper.io/)
 [![dependency status](https://img.shields.io/david/juliuste/projections.svg)](https://david-dm.org/juliuste/projections)
 [![dev dependency status](https://img.shields.io/david/dev/juliuste/projections.svg)](https://david-dm.org/juliuste/projections#info=devDependencies)
 [![license](https://img.shields.io/github/license/juliuste/projections.svg?style=flat)](LICENSE)
+[![chat on gitter](https://badges.gitter.im/juliuste.svg)](https://gitter.im/juliuste)
 
 ## Installation
 
