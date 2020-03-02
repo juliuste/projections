@@ -30,7 +30,7 @@
 		"!test.js"
 	],
 	"devDependencies": {
-		"tape": "^4.6"
+		"tape": "^4.13.2"
 	},
 	"scripts": {
 		"test": "node test.js",
